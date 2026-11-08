@@ -8,10 +8,13 @@ This repository contains the actual browser application for GiveBack. Volunteers
 
 ![GiveBack public web interface showing the volunteering homepage](docs/public-interface.jpg)
 
+[Browser request flow](docs/architecture.md)
+
 ## Local development
 
 Use Node.js 22 or later. In `frontend`, run `npm ci`, then `npm run dev`. `npm run build` produces the static client bundle.
 
-The client defaults to `http://localhost:5066`. Copy `frontend/.env.example` to `frontend/.env` if you have a compatible development API and want to configure `VITE_API_BASE_URL`. Features that read or write data require that API. Use a development service and synthetic accounts.
+The client defaults to `http://localhost:5066/api/v1`. Copy `frontend/.env.example` to `frontend/.env` if you have a compatible development API and want to configure `VITE_API_BASE_URL`. Features that read or write data require that API. Use a development service and synthetic accounts.
 
 This public release contains the React frontend. The [architecture showcase](https://github.com/INDZO/GiveBack-Showcase) documents the private ASP.NET Core, Clean Architecture, CQRS, EF Core and SQL Server backend. The sample account shortcuts were removed from this release.
+
