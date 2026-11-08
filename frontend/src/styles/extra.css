@@ -1,0 +1,57 @@
+/* Supplemental helpers that bridge small gaps the design CSS doesn't cover
+   (spinners, generic state blocks, skeletons). Built with the design tokens. */
+
+.gb-spinner{
+  display:inline-block;border:3px solid var(--purple-100,#ECE5FF);
+  border-top-color:var(--purple,#5121C7);border-radius:50%;
+  animation:gb-spin .7s linear infinite;
+}
+@keyframes gb-spin{to{transform:rotate(360deg)}}
+
+.gb-state{
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:14px;text-align:center;padding:64px 24px;color:var(--muted,#6B7280);
+}
+.gb-state h3{font-size:1.1rem;color:var(--ink,#111827)}
+.gb-state p{max-width:420px;font-size:.95rem}
+
+/* Inline pending spinner for buttons */
+.btn .gb-spinner{width:16px;height:16px;border-width:2px;border-top-color:#fff;border-color:rgba(255,255,255,.45);border-top-color:#fff}
+.btn-secondary .gb-spinner,.btn-light .gb-spinner{border-color:var(--purple-100,#ECE5FF);border-top-color:var(--purple,#5121C7)}
+
+/* Skeleton shimmer */
+.gb-skel{
+  background:linear-gradient(90deg,#eee 25%,#f5f5f5 37%,#eee 63%);
+  background-size:400% 100%;animation:gb-shimmer 1.4s ease infinite;border-radius:8px;
+}
+@keyframes gb-shimmer{0%{background-position:100% 0}100%{background-position:-100% 0}}
+
+/* Generic field error helper (forms outside auth.css markup) */
+.gb-form-error{color:var(--red,#B91C1C);font-size:.85rem;margin-top:6px;display:flex;align-items:center;gap:6px}
+
+/* Make router links inside design buttons behave like the original anchors */
+a.btn{ text-decoration:none; }
+
+/* ---- Grid/flex overflow guards ----
+   CSS grid & flex children default to min-width:auto, so a child with wide
+   intrinsic content (long titles, nowrap status pills, the bar chart) can
+   refuse to shrink and force its track — and the whole page — past the
+   viewport width. Allowing tracks to shrink keeps inner content wrapping /
+   scrolling instead of blowing out the layout (notably the volunteer
+   dashboard's 1.6fr/1fr two-column grid). */
+.col-2 > *,
+.col-3 > *,
+.col-2 .stack,
+.stack > * { min-width: 0; }
+.barchart { min-width: 0; }
+.lrow { min-width: 0; }
+.lrow-body { min-width: 0; }
+.lrow-title { min-width: 0; overflow-wrap: anywhere; }
+
+/* Fill cause-tone gaps where handoff variants are reused outside app.css. */
+.opp-img.ani,.dh-cover.ani{background:linear-gradient(135deg,#FFF1E6,#ffe2cc)}
+.opp-img.tech,.dh-cover.tech{background:linear-gradient(135deg,#EAF1FF,#d2e2fc)}
+.opp-img.health,.dh-cover.health{background:linear-gradient(135deg,#FEF2F2,#fbdcdc)}
+.opp-img.ani svg,.dh-cover.ani svg{color:var(--orange,#B45A14)}
+.opp-img.tech svg,.dh-cover.tech svg{color:var(--blue,#1E4FA3)}
+.opp-img.health svg,.dh-cover.health svg{color:var(--red,#B91C1C)}
