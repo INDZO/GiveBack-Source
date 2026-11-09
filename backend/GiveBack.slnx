@@ -1,0 +1,8 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/GiveBack.Api/GiveBack.Api.csproj" />
+    <Project Path="src/GiveBack.Application/GiveBack.Application.csproj" />
+    <Project Path="src/GiveBack.Domain/GiveBack.Domain.csproj" />
+    <Project Path="src/GiveBack.Infrastructure/GiveBack.Infrastructure.csproj" />
+  </Folder>
+</Solution>
